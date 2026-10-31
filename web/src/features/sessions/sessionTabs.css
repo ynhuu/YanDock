@@ -1,0 +1,225 @@
+.dock-empty {
+  color: var(--muted-foreground);
+  padding-left: 12px;
+  font-size: 0.75rem;
+}
+
+.menu-backdrop {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--viewport-height, 100dvh);
+  z-index: 10;
+  background: rgb(0 0 0 / 35%);
+}
+.menu-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+.menu-heading > span {
+  font-size: 0.7rem;
+  font-weight: 450;
+  color: var(--muted-foreground);
+}
+.tab-menu .appearance-setting {
+  width: calc(100% - 1rem);
+  margin: 0 8px 4px;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 4px;
+  color: var(--muted-foreground);
+}
+.appearance-setting > span:nth-child(2) {
+  flex: 1;
+}
+.font-size-setting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.tab-menu .font-size-setting button {
+  width: 44px;
+  justify-content: center;
+  padding: 0;
+  font-size: 18px;
+}
+.setting-action {
+  color: var(--muted-foreground);
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+.sheet-handle {
+  width: 32px;
+  height: 4px;
+  margin: 4px auto 0;
+  border-radius: 4px;
+  background: var(--border);
+}
+.tab-menu .danger-action {
+  color: var(--danger);
+}
+
+/* Bottom tab bar owns the home-indicator inset; it is the lowest element. */
+.tab-bar {
+  display: flex;
+  height: calc(45px + env(safe-area-inset-bottom));
+  min-height: calc(45px + env(safe-area-inset-bottom));
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px env(safe-area-inset-bottom);
+  border-top: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  background: var(--terminal-background);
+}
+
+.tab-scroll {
+  @apply flex min-h-11 min-w-0 flex-1 items-center;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  @apply relative flex h-11 flex-none items-center gap-1.5 px-2.5 whitespace-nowrap transition-colors;
+  border: 0;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.tab[data-dragging='true'] {
+  background: var(--surface-hover);
+  opacity: 0.65;
+  cursor: grabbing;
+}
+
+.tab[data-drop-target='true'] {
+  box-shadow: inset 2px 0 var(--primary);
+}
+
+.tab[aria-selected='true'] {
+  color: var(--foreground);
+}
+
+.tab[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary);
+}
+
+.tab .tab-dot {
+  width: 5px;
+  height: 5px;
+}
+
+.tab-actions {
+  @apply flex flex-none items-center;
+  position: relative;
+}
+
+.tab-actions::before {
+  content: '';
+  width: 1px;
+  height: 16px;
+  margin-right: 4px;
+  background: var(--border);
+}
+
+.tab-action {
+  @apply flex size-11 flex-none items-center justify-center rounded-lg transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  color: var(--muted-foreground);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-action-create {
+  color: var(--foreground);
+}
+
+@media (hover: hover) {
+  .tab-action:hover,
+  .tab:hover {
+    background: var(--surface-hover);
+    color: var(--foreground);
+  }
+}
+
+.tab-dot {
+  @apply size-2 flex-none rounded-full bg-muted-foreground;
+}
+
+.tab-dot-live {
+  @apply bg-primary;
+}
+
+.tab-dot-connecting,
+.tab-dot-retry {
+  @apply animate-pulse bg-amber-400;
+}
+
+.tab-dot-stopped {
+  @apply bg-red-400;
+}
+
+.tab-menu {
+  @apply flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-xl;
+  position: absolute;
+  right: 8px;
+  bottom: calc(100% + 8px);
+  z-index: 20;
+  width: min(19rem, calc(100vw - 16px));
+  max-height: calc(min(100dvh, var(--viewport-height, 100dvh)) - 92px);
+  overflow-y: auto;
+  box-shadow: var(--card-shadow);
+}
+
+.menu-version {
+  @apply shrink-0 px-3 pt-2 pb-1 text-right text-[10px] text-muted-foreground;
+}
+
+.tab-menu button {
+  @apply flex min-h-11 shrink-0 items-center gap-2.5 rounded-lg px-3 text-left text-[13px] transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  color: var(--foreground);
+}
+
+.tab-menu button:hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+@media (min-width: 640px) {
+  .sheet-handle {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .tab-menu {
+    width: auto;
+    left: 8px;
+    border-radius: 16px;
+    padding: 6px;
+  }
+  .tab-bar {
+    padding-inline: 8px;
+  }
+  .tab {
+    padding-inline: 10px;
+  }
+}

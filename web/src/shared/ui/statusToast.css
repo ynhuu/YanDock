@@ -1,0 +1,117 @@
+.status-toast {
+  @apply pointer-events-none flex w-max max-w-full items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm leading-relaxed text-foreground;
+  border-color: color-mix(in oklab, var(--info) 28%, var(--border));
+  border-left: 3px solid var(--info);
+  background: color-mix(in oklab, var(--info) 8%, var(--card));
+  box-shadow: var(--card-shadow);
+  overflow-wrap: anywhere;
+}
+
+.status-toast-icon {
+  @apply flex size-5 shrink-0 items-center justify-center rounded-full;
+  color: var(--info);
+  background: color-mix(in oklab, var(--info) 12%, transparent);
+}
+
+.status-toast-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.status-toast-content p {
+  margin: 0;
+}
+
+.status-toast-progress {
+  position: relative;
+  width: min(240px, calc(100vw - 100px));
+  height: 3px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--info) 14%, var(--card));
+}
+
+.status-toast-progress > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--info);
+  transition: width 120ms ease;
+}
+
+.status-toast-action {
+  flex: none;
+  pointer-events: auto;
+}
+
+.status-toast-cancel {
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  padding: 0;
+  color: var(--info);
+  font-size: 0.72rem;
+  line-height: 0;
+}
+
+.status-toast-cancel:hover {
+  background: color-mix(in oklab, var(--info) 10%, transparent);
+}
+
+.status-toast-success .status-toast-progress {
+  background: color-mix(in oklab, var(--success) 14%, var(--card));
+}
+
+.status-toast-success .status-toast-progress > span {
+  background: var(--success);
+}
+
+.status-toast-error .status-toast-progress {
+  background: color-mix(in oklab, var(--danger) 14%, var(--card));
+}
+
+.status-toast-error .status-toast-progress > span {
+  background: var(--danger);
+}
+
+.status-toast-success {
+  border-color: color-mix(in oklab, var(--success) 28%, var(--border));
+  border-left-color: var(--success);
+  background: color-mix(in oklab, var(--success) 8%, var(--card));
+}
+
+.status-toast-success .status-toast-icon {
+  color: var(--success);
+  background: color-mix(in oklab, var(--success) 12%, transparent);
+}
+
+.status-toast-warning {
+  border-color: color-mix(in oklab, var(--warning) 28%, var(--border));
+  border-left-color: var(--warning);
+  background: color-mix(in oklab, var(--warning) 8%, var(--card));
+}
+
+.status-toast-warning .status-toast-icon {
+  color: var(--warning);
+  background: color-mix(in oklab, var(--warning) 12%, transparent);
+}
+
+.status-toast-error {
+  border-color: color-mix(in oklab, var(--danger) 35%, var(--border));
+  border-left-color: var(--danger);
+  background: color-mix(in oklab, var(--danger) 8%, var(--card));
+  color: var(--danger);
+}
+
+.status-toast-error .status-toast-icon {
+  color: var(--danger);
+  background: color-mix(in oklab, var(--danger) 12%, transparent);
+}

@@ -1,0 +1,48 @@
+:root {
+  color-scheme: dark;
+  --background: #0b0f14;
+  --foreground: #e6edf3;
+  --card: #121923;
+  --border: #283443;
+  --primary: #64e4a3;
+  --primary-foreground: #092517;
+  --muted-foreground: #98a5b5;
+  --surface-hover: rgb(226 232 240 / 7%);
+  --card-shadow: 0 24px 64px rgb(0 0 0 / 28%);
+  --danger: #f87171;
+  --info: #60a5fa;
+  --success: #4ade80;
+  --warning: #facc15;
+  --terminal-background: #0b0f14;
+  font-family: system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #f3f6fa;
+  --foreground: #17212b;
+  --card: #ffffff;
+  --border: #dbe3ec;
+  --primary: #087e57;
+  --primary-foreground: #ffffff;
+  --muted-foreground: #657386;
+  --surface-hover: rgb(23 33 43 / 6%);
+  --card-shadow: 0 24px 64px rgb(36 54 72 / 12%);
+  --danger: #c43131;
+  --info: #2563eb;
+  --success: #15803d;
+  --warning: #a16207;
+  --terminal-background: #fbfdff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+}

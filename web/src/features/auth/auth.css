@@ -1,0 +1,109 @@
+.login-screen {
+  padding-top: max(2rem, env(safe-area-inset-top));
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      color-mix(in oklab, var(--primary) 13%, transparent),
+      transparent 52%
+    ),
+    var(--background);
+}
+
+.login-card {
+  padding: 2rem 1rem;
+}
+
+.login-brand-row {
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.login-brand {
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.login-brand span {
+  color: var(--muted-foreground);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-left: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.login-input {
+  min-height: 44px;
+  color: var(--foreground);
+  font-size: 14px;
+}
+
+.login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  min-height: 44px;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition:
+    filter 150ms ease,
+    transform 150ms ease;
+}
+
+.login-submit:hover {
+  filter: brightness(1.08);
+}
+
+.login-submit:active {
+  transform: scale(0.985);
+}
+
+.login-eyebrow {
+  margin-top: 2rem;
+  color: var(--primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.login-footnote {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.login-footnote svg {
+  width: 16px;
+  flex: none;
+}
+
+.login-screen [role='alert'] {
+  color: var(--danger);
+}
+
+@media (min-width: 640px) {
+  .login-card {
+    padding: 2rem;
+    max-width: 25rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: var(--card-shadow);
+  }
+}
+
+@media (max-width: 639px) {
+  .login-screen.grid {
+    place-items: start center;
+    align-content: start;
+    padding-top: calc(env(safe-area-inset-top) + clamp(0.75rem, 2svh, 1rem));
+  }
+}

@@ -1,0 +1,94 @@
+/* Only inner panels scroll; the page stays within the mobile visual viewport. */
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  overscroll-behavior: none;
+  touch-action: pan-x pan-y;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Suppress native long-press selection menus across the mobile app. */
+html.mobile-long-press-guard body,
+html.mobile-long-press-guard body * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Keep native text selection and paste available in editable fields. */
+html.mobile-long-press-guard body input,
+html.mobile-long-press-guard body textarea,
+html.mobile-long-press-guard body [contenteditable='true'] {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* File previews keep native selection and copy on touch devices. */
+html.mobile-long-press-guard body .project-preview-scroll,
+html.mobile-long-press-guard body .project-preview-scroll * {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+button {
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button:active:not(:disabled) {
+  filter: brightness(0.94);
+}
+button:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+button:focus-visible svg {
+  opacity: 0.65;
+}
+
+.brand-mark {
+  display: grid;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--primary) 25%, var(--border));
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--primary) 10%, var(--card));
+  color: var(--primary);
+}
+
+.control {
+  @apply min-h-11 rounded-xl border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-primary disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+input:focus-visible {
+  outline-color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+@import '../shared/theme/theme.css';
+@import '../shared/ui/base.css';
+@import '../shared/ui/statusToast.css';
+@import '../features/auth/auth.css';
+@import '../features/workspace/workspace.css';
+@import '../features/project/projectDrawer.css';
+@import '../features/sessions/sessionTabs.css';
+@import '../features/terminal/terminal.css';
+
+/* Give every enabled button a consistent press and release animation. */
+button:not(:disabled) {
+  transition-property:
+    transform, filter, color, background-color, border-color, box-shadow,
+    opacity;
+  transition-duration: 120ms;
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96);
+  filter: brightness(0.94);
+}
+
+button.tab[data-dragging='true'] {
+  transform: none;
+}
